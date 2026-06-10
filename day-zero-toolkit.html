@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day Zero Toolkit — 48-Hour Layoff Survival Protocol</title>
+  <meta name="description" content="Real steps, real resources, real talk. A critical 48-hour protocol for navigating sudden job loss.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Day Zero Toolkit — 48-Hour Layoff Survival Protocol">
+  <meta property="og:description" content="What to do immediately when you lose your job. Built for federal workers, tech professionals, and the DMV community.">
+  <meta property="og:url" content="https://sierranapier.com/day-zero-toolkit">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       SIDE HUSTLE SISI — DATA VIGILANTE BRAND TOKENS
+       "The Robin Hood of AI"
+    ============================================================ */
+    :root {
+      --green:        #00FF41;
+      --green-dim:    #00CC33;
+      --green-dark:   #00661A;
+      --lime:         #BFFF00;
+      --gold:         #D4AF37;
+      --gold-light:   #F0D060;
+      --gold-dark:    #9A7A1A;
+      --crimson:      #DC143C;
+      --crimson-dim:  #A00E2B;
+      --charcoal:     #121212;
+      --charcoal-2:   #1A1A1A;
+      --charcoal-3:   #222222;
+      --charcoal-4:   #2A2A2A;
+      --white:        #F5F5F5;
+      --muted:        #555555;
+      --muted-light:  #888888;
+
+      --grad-hero:    linear-gradient(135deg, #00FF41 0%, #BFFF00 100%);
+      --grad-gold:    linear-gradient(135deg, #D4AF37 0%, #F0D060 100%);
+      --grad-dark:    linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%);
+      --grad-matrix:  linear-gradient(180deg, #121212 0%, #0A1A0A 100%);
+      --grad-crimson: linear-gradient(135deg, #DC143C 0%, #FF4060 100%);
+
+      --radius-card:  4px;
+      --radius-btn:   2px;
+      --font-primary: 'Space Mono', 'Courier New', monospace;
+      --font-body:    'Inter', -apple-system, sans-serif;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--charcoal);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { color: var(--lime); text-decoration: underline; }
+
+    /* ============================================================
+       MATRIX RAIN CANVAS (decorative background)
+    ============================================================ */
+    #matrix-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--green-dark);
+      padding: 14px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-primary);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.05em;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      color: var(--muted-light);
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); text-decoration: none; }
+
+    /* ============================================================
+       PAGE SECTIONS
+    ============================================================ */
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 72px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .page + .page {
+      border-top: 1px solid rgba(0,255,65,0.12);
+    }
+    .page-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    .display {
+      font-family: var(--font-primary);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-family: var(--font-primary); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.15; }
+    h2 { font-family: var(--font-primary); font-size: clamp(22px, 3vw, 32px); font-weight: 700; line-height: 1.25; letter-spacing: 0.01em; }
+    h3 { font-family: var(--font-primary); font-size: clamp(16px, 2vw, 22px); font-weight: 700; line-height: 1.35; }
+    h4 { font-family: var(--font-primary); font-size: 15px; font-weight: 700; letter-spacing: 0.03em; }
+    p  { font-size: 15px; line-height: 1.75; color: rgba(245,245,245,0.78); }
+    .caption { font-family: var(--font-primary); font-size: 11px; color: var(--muted-light); letter-spacing: 0.06em; }
+    .mono { font-family: var(--font-primary); font-size: 13px; }
+
+    .green-text   { color: var(--green); }
+    .gold-text    { color: var(--gold); }
+    .lime-text    { color: var(--lime); }
+    .crimson-text { color: var(--crimson); }
+    .muted-text   { color: var(--muted-light); }
+
+    .gradient-text-green {
+      background: var(--grad-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-gold {
+      background: var(--grad-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================================
+       SECTION EYEBROW
+    ============================================================ */
+    .section-eyebrow {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::before { content: '//'; color: var(--gold); }
+    .section-eyebrow::after {
+      content: '';
+      flex: 1; max-width: 60px;
+      height: 1px;
+      background: var(--green-dark);
+    }
+
+    /* ============================================================
+       CARDS
+    ============================================================ */
+    .card {
+      background: var(--charcoal-2);
+      border: 1px solid rgba(0,255,65,0.15);
+      border-radius: var(--radius-card);
+      padding: 24px 28px;
+    }
+    .card-gold {
+      background: rgba(212,175,55,0.06);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .card-green {
+      background: rgba(0,255,65,0.04);
+      border: 1px solid rgba(0,255,65,0.25);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .card-crimson {
+      background: rgba(220,20,60,0.06);
+      border: 1px solid rgba(220,20,60,0.25);
+      border-left: 3px solid var(--crimson);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .card-matrix {
+      background: var(--grad-matrix);
+      border: 1px solid rgba(0,255,65,0.2);
+      border-radius: var(--radius-card);
+      padding: 24px 28px;
+    }
+
+    /* ============================================================
+       BADGES
+    ============================================================ */
+    .badge {
+      display: inline-block;
+      font-family: var(--font-primary);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .badge-green   { background: rgba(0,255,65,0.1);  color: var(--green);   border: 1px solid rgba(0,255,65,0.35); }
+    .badge-gold    { background: rgba(212,175,55,0.1); color: var(--gold);    border: 1px solid rgba(212,175,55,0.35); }
+    .badge-crimson { background: rgba(220,20,60,0.1);  color: var(--crimson); border: 1px solid rgba(220,20,60,0.35); }
+    .badge-lime    { background: rgba(191,255,0,0.1);  color: var(--lime);    border: 1px solid rgba(191,255,0,0.35); }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-primary);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: var(--radius-btn);
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.1); text-decoration: none; }
+    .btn-primary { background: var(--green); color: var(--charcoal); }
+    .btn-gold    { background: var(--grad-gold); color: var(--charcoal); }
+    .btn-outline { background: transparent; color: var(--green); border: 2px solid var(--green); }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,255,65,0.3), transparent);
+      margin: 32px 0;
+    }
+    .divider-gold {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+      margin: 28px 0;
+    }
+
+    /* ============================================================
+       CHECKLIST
+    ============================================================ */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(245,245,245,0.85);
+      font-family: var(--font-body);
+    }
+    .check-box {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border: 2px solid var(--green-dark);
+      border-radius: 2px;
+      margin-top: 2px;
+      background: rgba(0,255,65,0.04);
+    }
+    .checklist li.crit  .check-box { border-color: var(--crimson); background: rgba(220,20,60,0.06); }
+    .checklist li.warn  .check-box { border-color: var(--gold);    background: rgba(212,175,55,0.06); }
+    .checklist li.stab  .check-box { border-color: var(--green);   background: rgba(0,255,65,0.06); }
+
+    /* ============================================================
+       PHASE HEADER
+    ============================================================ */
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .phase-line {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       CODE BLOCK
+    ============================================================ */
+    .code-block {
+      background: #0A0A0A;
+      border: 1px solid rgba(0,255,65,0.2);
+      border-radius: var(--radius-card);
+      padding: 22px 24px;
+      font-family: var(--font-primary);
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--green);
+      overflow-x: auto;
+    }
+    .code-block .comment  { color: #444; }
+    .code-block .var      { color: var(--gold); }
+    .code-block .keyword  { color: var(--lime); }
+    .code-block .string   { color: var(--green-dim); }
+    .code-block .link     { color: var(--green); opacity: 0.75; font-size: 12px; }
+
+    /* ============================================================
+       TABLE
+    ============================================================ */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th {
+      text-align: left;
+      padding: 11px 14px;
+      background: rgba(0,255,65,0.07);
+      color: var(--green);
+      font-family: var(--font-primary);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: rgba(245,245,245,0.8);
+      vertical-align: top;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(0,255,65,0.03); }
+
+    /* ============================================================
+       DON'T CARD
+    ============================================================ */
+    .dont-card {
+      background: var(--charcoal-2);
+      border: 1px solid rgba(220,20,60,0.18);
+      border-left: 3px solid var(--crimson);
+      border-radius: var(--radius-card);
+      padding: 18px 22px;
+    }
+    .dont-num  { font-family: var(--font-primary); font-size: 10px; font-weight: 700; color: var(--crimson); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+    .dont-rule { font-family: var(--font-primary); font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .dont-why  { font-size: 13px; color: rgba(245,245,245,0.68); line-height: 1.6; }
+    .dont-why strong { color: rgba(245,245,245,0.9); }
+
+    /* ============================================================
+       BENEFIT BLOCK
+    ============================================================ */
+    .benefit-block {
+      background: var(--charcoal-2);
+      border: 1px solid rgba(0,255,65,0.14);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .benefit-header {
+      background: rgba(0,255,65,0.07);
+      border-bottom: 1px solid rgba(0,255,65,0.14);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .benefit-header h4 { font-size: 13px; color: var(--white); letter-spacing: 0.03em; }
+    .benefit-body { padding: 16px 20px; }
+    .benefit-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 13px;
+    }
+    .benefit-row:last-child { border-bottom: none; }
+    .benefit-key { font-family: var(--font-primary); font-size: 10px; font-weight: 700; color: var(--muted-light); min-width: 100px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.06em; }
+    .benefit-val { color: rgba(245,245,245,0.82); }
+    .benefit-urgent { color: var(--crimson); font-weight: 700; font-family: var(--font-primary); font-size: 12px; }
+    .benefit-link { color: var(--green); font-family: var(--font-primary); font-size: 11px; }
+
+    /* ============================================================
+       SOURCE BAR
+    ============================================================ */
+    .source-bar {
+      background: rgba(0,255,65,0.03);
+      border: 1px solid rgba(0,255,65,0.1);
+      border-radius: 3px;
+      padding: 12px 16px;
+      font-family: var(--font-primary);
+      font-size: 10px;
+      color: var(--muted-light);
+      line-height: 1.9;
+      margin-top: 24px;
+      letter-spacing: 0.04em;
+    }
+    .source-bar a { color: var(--green-dim); }
+
+    /* ============================================================
+       GRIDS
+    ============================================================ */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    @media (max-width: 720px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .page { padding: 48px 20px; }
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+    }
+
+    /* ============================================================
+       PAGE NUMBER
+    ============================================================ */
+    .page-num {
+      position: absolute;
+      top: 28px;
+      right: 48px;
+      font-family: var(--font-primary);
+      font-size: 10px;
+      color: var(--green-dark);
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       TIMELINE
+    ============================================================ */
+    .timeline {
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      padding: 8px 0;
+      gap: 0;
+    }
+    .tl-node { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 90px; }
+    .tl-circle {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 700;
+      border: 2px solid;
+    }
+    .tl-label { font-family: var(--font-primary); font-size: 10px; color: var(--muted-light); text-align: center; letter-spacing: 0.04em; line-height: 1.3; }
+    .tl-line { flex: 1; height: 2px; background: linear-gradient(90deg, var(--green-dark), rgba(0,255,65,0.2)); min-width: 24px; }
+
+    /* ============================================================
+       STAT BOX
+    ============================================================ */
+    .stat-num {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      background: var(--grad-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    /* ============================================================
+       FEATURE LIST
+    ============================================================ */
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: rgba(245,245,245,0.82); }
+    .feature-icon {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 700;
+      width: 24px; height: 24px;
+      background: rgba(0,255,65,0.1);
+      border: 1px solid var(--green-dark);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--green);
+      margin-top: 1px;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #0A0A0A;
+      border-top: 1px solid rgba(0,255,65,0.15);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-brand { font-family: var(--font-primary); font-size: 12px; font-weight: 700; color: var(--green); letter-spacing: 0.06em; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-family: var(--font-primary); font-size: 10px; color: var(--muted-light); letter-spacing: 0.05em; }
+    .footer-links a:hover { color: var(--green); text-decoration: none; }
+
+    /* ============================================================
+       SCAN LINE DECORATION
+    ============================================================ */
+    .scan-line {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,255,65,0.15), transparent);
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       LIGHT MODE
+    ============================================================ */
+    body.light-mode {
+      --green:        #007A1F;
+      --green-dim:    #006618;
+      --green-dark:   #004D12;
+      --lime:         #5A8800;
+      --gold:         #9A6E00;
+      --gold-light:   #C49200;
+      --gold-dark:    #7A5200;
+      --crimson:      #B00030;
+      --crimson-dim:  #8A0024;
+      --charcoal:     #F8F8F8;
+      --charcoal-2:   #EFEFEF;
+      --charcoal-3:   #E5E5E5;
+      --charcoal-4:   #DCDCDC;
+      --white:        #121212;
+      --muted:        #AAAAAA;
+      --muted-light:  #777777;
+      --grad-matrix:  linear-gradient(180deg, #F5F5F5 0%, #EAFAEA 100%);
+      background: #F8F8F8;
+      color: #121212;
+    }
+    body.light-mode #matrix-canvas { opacity: 0.03; filter: invert(1); }
+    body.light-mode nav { background: rgba(248,248,248,0.97); border-bottom-color: #CCC; }
+    body.light-mode .card { background: #FFF; border-color: rgba(0,120,30,0.18); }
+    body.light-mode .card-gold { background: rgba(212,175,55,0.08); }
+    body.light-mode .card-green { background: rgba(0,120,30,0.06); }
+    body.light-mode .card-crimson { background: rgba(176,0,48,0.05); }
+    body.light-mode .card-matrix { background: #EAFAEA; }
+    body.light-mode .benefit-block { background: #FFF; border-color: rgba(0,120,30,0.15); }
+    body.light-mode .benefit-header { background: rgba(0,120,30,0.06); border-color: rgba(0,120,30,0.15); }
+    body.light-mode .code-block { background: #F0F0F0; border-color: rgba(0,120,30,0.2); color: var(--green); }
+    body.light-mode .dont-card { background: #FFF; border-color: rgba(176,0,48,0.2); }
+    body.light-mode table th { background: rgba(0,120,30,0.08); }
+    body.light-mode footer { background: #EFEFEF; border-top-color: #CCC; }
+    body.light-mode .source-bar { background: rgba(0,120,30,0.04); border-color: rgba(0,120,30,0.12); }
+    body.light-mode p { color: rgba(18,18,18,0.78); }
+
+    /* ============================================================
+       LIGHT MODE TOGGLE
+    ============================================================ */
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-primary);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--muted-light);
+      cursor: pointer;
+      background: none;
+      border: 1px solid rgba(0,255,65,0.2);
+      border-radius: 2px;
+      padding: 5px 10px;
+      transition: all 0.2s;
+    }
+    .mode-toggle:hover { border-color: var(--green); color: var(--green); }
+    .mode-toggle-icon { font-size: 13px; }
+
+    /* ============================================================
+       FOOTER UPDATES
+    ============================================================ */
+    footer .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-support-links {
+      display: flex;
+      gap: 20px;
+    }
+    .support-link {
+      font-family: var(--font-primary);
+      font-size: 10px;
+      color: var(--muted-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s ease;
+    }
+    .support-link:hover {
+      color: var(--green);
+      text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       FLOATING COFFEE BUTTON
+    ============================================================ */
+    .floating-coffee-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #000;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-decoration: none;
+      z-index: 9999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 10px rgba(0,255,65,0.1);
+      transition: all 0.2s ease-in-out;
+    }
+    .floating-coffee-btn:hover {
+      background: var(--green);
+      color: #000;
+      box-shadow: 0 0 18px rgba(0,255,65,0.55);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .floating-coffee-btn svg { transition: transform 0.2s ease; }
+    .floating-coffee-btn:hover svg { transform: rotate(-5deg) scale(1.1); }
+    body.light-mode .floating-coffee-btn { background: #121212; }
+    body.light-mode .floating-coffee-btn:hover { background: var(--green); color: #FFF; }
+    @media (max-width: 600px) {
+      .floating-coffee-btn .btn-text { display: none; }
+      .floating-coffee-btn { padding: 12px; bottom: 16px; right: 16px; border-radius: 50%; }
+      .footer-container { flex-direction: column; gap: 10px; align-items: flex-start; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Matrix rain canvas -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav>
+  <span class="nav-brand">SIDE HUSTLE SISI &nbsp;<span>// DATA VIGILANTE</span></span>
+  <button class="mode-toggle" onclick="document.body.classList.toggle('light-mode'); this.querySelector('.mode-toggle-icon').textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️'; this.querySelector('.mode-toggle-label').textContent = document.body.classList.contains('light-mode') ? 'DARK' : 'LIGHT';" aria-label="Toggle light/dark mode">
+    <span class="mode-toggle-icon">☀️</span><span class="mode-toggle-label">LIGHT</span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#cover">00_INIT</a></li>
+    <li><a href="#how-to-use">01_BRIEF</a></li>
+    <li><a href="#checklist">02_EXECUTE</a></li>
+    <li><a href="#dont-say">03_AVOID</a></li>
+    <li><a href="#benefits">04_CLAIM</a></li>
+    <li><a href="#federal">05_FED</a></li>
+    <li><a href="#blackbox">06_🔑</a></li>
+    <li><a href="#dmv">07_DMV</a></li>
+    <li><a href="#workforce">08_💰</a></li>
+    <li><a href="#ai-prompt">09_AI</a></li>
+    <li><a href="#next">10_NEXT</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     PAGE 1 — COVER
+============================================================ -->
+<section class="page" id="cover" style="background: var(--grad-matrix); text-align:center; align-items:center; min-height:100vh;">
+  <div class="scan-line" style="top:30%;"></div>
+  <div class="scan-line" style="top:70%;"></div>
+
+  <div class="page-inner">
+    <div style="font-family:var(--font-primary); font-size:11px; color:var(--green-dim); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:24px;">
+      // INITIALIZING SURVIVAL PROTOCOL...
+    </div>
+
+    <h1 class="display" style="margin-bottom:8px;">
+      <span class="gradient-text-green">DAY ZERO</span><br>
+      <span style="color:var(--gold);">TOOLKIT</span>
+    </h1>
+
+    <p style="font-family:var(--font-primary); font-size:16px; font-weight:700; color:var(--white); margin:20px auto 8px; max-width:540px; line-height:1.45; letter-spacing:0.02em;">
+      WHAT TO DO WHEN YOU LOSE YOUR JOB
+    </p>
+    <p style="font-size:15px; color:rgba(245,245,245,0.6); max-width:480px; margin:0 auto 36px; line-height:1.6;">
+      Real steps. Real resources. Real talk — from someone who's been there.
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:44px;">
+      <span class="badge badge-green">8 Pages</span>
+      <span class="badge badge-gold">Cited Sources</span>
+      <span class="badge badge-lime" style="border-color:rgba(191,255,0,0.3); color:var(--lime); background:rgba(191,255,0,0.08);">DC + Federal</span>
+      <span class="badge badge-green">AI Prompts Included</span>
+      <span class="badge badge-gold">Free Forever</span>
+    </div>
+
+    <a href="#how-to-use" class="btn btn-primary">EXECUTE PROTOCOL →</a>
+
+    <div style="margin-top:56px; display:flex; justify-content:center; gap:56px; flex-wrap:wrap; border-top:1px solid rgba(0,255,65,0.1); padding-top:40px;">
+      <div style="text-align:center;">
+        <span class="stat-num" style="font-size:36px;">48</span>
+        <div class="caption" style="margin-top:4px;">HOURS. THIS IS FOR RIGHT NOW.</div>
+      </div>
+      <div style="text-align:center;">
+        <span class="stat-num" style="font-size:36px; background:var(--grad-gold); -webkit-background-clip:text; background-clip:text;">5</span>
+        <div class="caption" style="margin-top:4px;">CRITICAL ERRORS TO AVOID.</div>
+      </div>
+      <div style="text-align:center;">
+        <span class="stat-num" style="font-size:36px;">$0</span>
+        <div class="caption" style="margin-top:4px;">COST. YOU'RE ALREADY STRESSED.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; font-family:var(--font-primary); font-size:11px; color:var(--muted); letter-spacing:0.08em;">
+      BUILT BY: SIERRA NAPIER &nbsp;·&nbsp; THME &nbsp;·&nbsp; WASHINGTON DC &nbsp;·&nbsp; 2026
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 2 — HOW TO USE
+============================================================ -->
+<section class="page" id="how-to-use">
+  <div class="page-num">01 / 07</div>
+  <div class="page-inner">
+    <div class="section-eyebrow">BRIEFING</div>
+    <h2>THIS GUIDE IS FOR <span class="gradient-text-green">RIGHT NOW</span></h2>
+    <p style="max-width:620px; margin-top:14px; font-size:15px;">
+      Most career guides skip straight to the job search — resume tips, LinkedIn hacks, networking scripts. This one doesn't.
+      This toolkit covers the <strong style="color:var(--white);">next 48 hours</strong>: before you update your LinkedIn, before you call your recruiter, before you spiral.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:20px; margin-bottom:32px;">
+      <div class="card-green">
+        <h4 style="color:var(--green); margin-bottom:12px;">✓ MADE FOR</h4>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+          <li style="font-size:13px; color:rgba(245,245,245,0.78);">People who just got the news and can't think straight</li>
+          <li style="font-size:13px; color:rgba(245,245,245,0.78);">Federal employees navigating DOGE-era layoffs</li>
+          <li style="font-size:13px; color:rgba(245,245,245,0.78);">Neurodivergent folks who need structure in chaos</li>
+          <li style="font-size:13px; color:rgba(245,245,245,0.78);">Anyone who needs to protect their money <em>today</em></li>
+        </ul>
+      </div>
+      <div class="card-crimson" style="background:rgba(220,20,60,0.04);">
+        <h4 style="color:var(--crimson); margin-bottom:12px;">✕ NOT FOR</h4>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+          <li style="font-size:13px; color:rgba(245,245,245,0.6);">People expecting a quick-fix job offer</li>
+          <li style="font-size:13px; color:rgba(245,245,245,0.6);">People who hate self-reflection</li>
+          <li style="font-size:13px; color:rgba(245,245,245,0.6);">Anyone who wants to skip straight to page 3</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:20px; font-size:15px; color:var(--gold);">// SUGGESTED EXECUTION ORDER</h3>
+    <div class="timeline">
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--crimson); color:var(--crimson); background:rgba(220,20,60,0.08);">P2</div>
+        <div class="tl-label">48-HR<br>CHECKLIST</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,0.08);">P3</div>
+        <div class="tl-label">DON'T SAY<br>THIS</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--green); color:var(--green); background:rgba(0,255,65,0.08);">P4</div>
+        <div class="tl-label">BENEFITS<br>REF</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--lime); color:var(--lime); background:rgba(191,255,0,0.06);">P5</div>
+        <div class="tl-label">FEDERAL<br>WORKERS</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,0.1);">P6</div>
+        <div class="tl-label">BLACK<br>BOX KEY</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--lime); color:var(--lime); background:rgba(191,255,0,0.06);">P7</div>
+        <div class="tl-label">DMV<br>MAP</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--lime); color:var(--lime); background:rgba(191,255,0,0.06);">P8</div>
+        <div class="tl-label">WIOA<br>GRANTS</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,0.08);">P9</div>
+        <div class="tl-label">AI<br>PROMPT</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-node">
+        <div class="tl-circle" style="border-color:var(--green); color:var(--green); background:rgba(0,255,65,0.08);">P10</div>
+        <div class="tl-label">WHAT'S<br>NEXT</div>
+      </div>
+    </div>
+
+    <div class="card-gold" style="margin-top:32px;">
+      <p style="font-family:var(--font-primary); font-size:14px; font-weight:700; color:var(--gold); font-style:italic; line-height:1.5;">
+        "YOUR LAYOFF IS A <span style="color:var(--green);">PLOT TWIST</span>.<br>NOT THE END OF THE STORY."
+      </p>
+      <div class="caption" style="margin-top:10px; color:var(--muted-light);">— SIERRA NAPIER, THME · THE ROBIN HOOD OF AI</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 3 — 48-HOUR CHECKLIST
+============================================================ -->
+<section class="page" id="checklist">
+  <div class="page-num">02 / 07</div>
+  <div class="page-inner">
+    <div class="section-eyebrow">PRIORITY ACTION</div>
+    <h2>YOUR <span class="gradient-text-green">48-HOUR</span> EMERGENCY CHECKLIST</h2>
+    <p style="margin-top:8px; margin-bottom:30px; font-family:var(--font-primary); font-size:11px; color:var(--muted-light); letter-spacing:0.06em;">
+      EXECUTE IN ORDER. BEFORE YOU DO ANYTHING ELSE.
+    </p>
+
+    <!-- HOUR 1-4 -->
+    <div class="card" style="margin-bottom:18px; border-left:3px solid var(--crimson);">
+      <div class="phase-header">
+        <span class="phase-line" style="color:var(--crimson);">▶ HOUR 01–04</span>
+        <span class="badge badge-crimson">CRITICAL</span>
+      </div>
+      <ul class="checklist">
+        <li class="crit"><div class="check-box"></div><span>Breathe. Literally. This is a plot twist, not the end. You have time to think clearly before you act.</span></li>
+        <li class="crit"><div class="check-box"></div><span>Save all personal files from your work device — access can be revoked within hours. Personal docs, contacts, anything that belongs to you.</span></li>
+        <li class="crit"><div class="check-box"></div><span>Write down your manager's name, HR contact, separation date, and the exact language used. You'll need this for unemployment filings and possibly legal action.</span></li>
+        <li class="crit"><div class="check-box"></div><span>Note the <strong style="color:var(--white);">exact date and time</strong> of the layoff conversation. This is your base date for unemployment claims and COBRA deadlines.</span></li>
+        <li class="crit"><div class="check-box"></div><span>Confirm health insurance status: does coverage end <em>today</em> or end of month? Call HR. This sets your COBRA election window.</span></li>
+        <li class="crit"><div class="check-box"></div><span style="color:var(--crimson); font-weight:700;">🚨 DO NOT post on social media. Not even a vague "big changes ahead." Not today. Not tonight.</span></li>
+      </ul>
+    </div>
+
+    <!-- HOUR 4-24 -->
+    <div class="card" style="margin-bottom:18px; border-left:3px solid var(--gold);">
+      <div class="phase-header">
+        <span class="phase-line" style="color:var(--gold);">▶ HOUR 04–24</span>
+        <span class="badge badge-gold">IMPORTANT</span>
+      </div>
+      <ul class="checklist">
+        <li class="warn"><div class="check-box"></div>
+          <span>File for unemployment insurance — <strong style="color:var(--white);">file the same day or next business day.</strong> UI does not back-pay before your filing date. Every day delayed = money lost.
+            &nbsp;<a href="https://www.usa.gov/unemployment-benefits" class="mono" style="font-size:11px;" target="_blank">usa.gov/unemployment-benefits</a>
+            &nbsp;·&nbsp; DC: <a href="https://does.dc.gov/page/file-claim" class="mono" style="font-size:11px;" target="_blank">does.dc.gov/page/file-claim</a>
+          </span>
+        </li>
+        <li class="warn"><div class="check-box"></div><span>Review your severance — <strong style="color:var(--white);">do NOT sign anything for at least 24 hours.</strong> Under ADEA, you have 21 days to review (45 if part of a group layoff). Source: <a href="https://www.eeoc.gov" class="mono" style="font-size:11px;" target="_blank">eeoc.gov</a></span></li>
+        <li class="warn"><div class="check-box"></div><span>If you received COBRA paperwork, note your deadline: <strong style="color:var(--white);">60 days to elect.</strong> Set a calendar reminder right now — missing this is permanent.</span></li>
+        <li class="warn"><div class="check-box"></div><span>Call your bank. Ask about hardship deferral or payment reduction programs. Most lenders won't advertise them. You have to ask.</span></li>
+        <li class="warn"><div class="check-box"></div><span>Tell one trusted person — someone who won't panic, gossip, or immediately launch into job search advice. Just a witness to the moment.</span></li>
+      </ul>
+    </div>
+
+    <!-- HOUR 24-48 -->
+    <div class="card" style="border-left:3px solid var(--green);">
+      <div class="phase-header">
+        <span class="phase-line" style="color:var(--green);">▶ HOUR 24–48</span>
+        <span class="badge badge-green">STABILIZE</span>
+      </div>
+      <ul class="checklist">
+        <li class="stab"><div class="check-box"></div>
+          <span>Calculate your financial runway: <span class="mono" style="background:rgba(0,255,65,0.08); padding:2px 6px; border-radius:2px; font-size:12px; color:var(--green);">savings ÷ monthly_expenses = months_of_cushion</span>. Write the number down. Knowing it is better than fearing it.</span>
+        </li>
+        <li class="stab"><div class="check-box"></div><span>Sort bills: what can be deferred (student loans, utilities — call and ask) vs. what cannot (rent, car, health insurance).</span></li>
+        <li class="stab"><div class="check-box"></div><span>Check SNAP eligibility. In DC: no asset test, income limit 200% FPL. Average benefit $200–$400/month. Apply: <a href="https://dhs.dc.gov/service/snap-eligibility-requirements" class="mono" style="font-size:11px;" target="_blank">dhs.dc.gov</a></span></li>
+        <li class="stab"><div class="check-box"></div><span>Establish a minimal daily structure. Wake time + one job-task block + a cut-off hour. Structure fights depression. Source: APA research on routine and mental health.</span></li>
+        <li class="stab"><div class="check-box"></div><span>Change passwords on all personal accounts — especially anything shared with work devices, SSO, or VPNs. Your digital security is now yours alone.</span></li>
+      </ul>
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://www.dol.gov/general/topic/unemployment-insurance">DOL.GOV — UNEMPLOYMENT INSURANCE</a> · <a href="https://does.dc.gov/page/file-claim">DC DOES — FILE A CLAIM</a> · <a href="https://dhs.dc.gov/service/snap-eligibility-requirements">DC DHS — SNAP</a> · <a href="https://www.eeoc.gov">EEOC — ADEA SEVERANCE RIGHTS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 4 — DON'T SAY THIS
+============================================================ -->
+<section class="page" id="dont-say">
+  <div class="page-num">03 / 07</div>
+  <div class="page-inner">
+    <div class="section-eyebrow">HR INTELLIGENCE</div>
+    <h2>THE 5 THINGS <span style="color:var(--crimson);">NOT</span> TO SAY OR DO</h2>
+    <p style="margin-top:8px; margin-bottom:28px; font-family:var(--font-primary); font-size:11px; color:var(--muted-light); letter-spacing:0.06em;">
+      GROUNDED IN HR EXPERIENCE. FROM SOMEONE WHO'S BEEN ON BOTH SIDES OF THAT TABLE.
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:12px;">
+
+      <div class="dont-card">
+        <div class="dont-num">// ERROR_01</div>
+        <div class="dont-rule">POST ON LINKEDIN WITHIN THE FIRST 24 HOURS</div>
+        <div class="dont-why"><strong>Why it destroys you:</strong> Emotional posts permanently shape how hiring managers perceive you. They look back. A calm, considered post in week two outperforms a raw one posted in hour two every time. <em>You don't owe the internet your grief.</em></div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-num">// ERROR_02</div>
+        <div class="dont-rule">SAY ANYTHING NEGATIVE ABOUT YOUR EMPLOYER</div>
+        <div class="dont-why"><strong>Why it destroys you:</strong> Reference checks are real. Former colleagues talk. Anything posted, emailed, or said professionally can follow you into your next interview. Vent to a therapist or trusted friend. Not Slack. Not Twitter. Not a "private" work group.</div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-num">// ERROR_03</div>
+        <div class="dont-rule">SIGN YOUR SEVERANCE AGREEMENT IMMEDIATELY</div>
+        <div class="dont-why"><strong>Why it destroys you:</strong> Under ADEA, you have <strong>21 days</strong> to review — 45 days if part of a group layoff. A one-time payment in exchange for waiving your legal rights deserves at least one night of sleep. Get it reviewed. Source: <a href="https://www.eeoc.gov" target="_blank">eeoc.gov</a></div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-num">// ERROR_04</div>
+        <div class="dont-rule">SKIP UNEMPLOYMENT BECAUSE YOU EXPECT TO FIND WORK FAST</div>
+        <div class="dont-why"><strong>Why it destroys you:</strong> Median job search for experienced workers: <strong>5–6 months.</strong> UI replaces 40–50% of prior wages. You paid into this system with every paycheck. Using it is not a moral failing — it's what it's there for. Source: <a href="https://www.bls.gov/cps/cpsaat30.htm" target="_blank">BLS Job Search Duration Data</a></div>
+      </div>
+
+      <div class="dont-card">
+        <div class="dont-num">// ERROR_05</div>
+        <div class="dont-rule">ISOLATE</div>
+        <div class="dont-why"><strong>Why it destroys you:</strong> Job loss ranks #8 of 43 on the Holmes-Rahe Stress Inventory. Isolation amplifies anxiety, depression, and bad decision-making. Tell one person today. The data is clear: connection is a buffer. Source: <a href="https://doi.org/10.1016/0022-3999(67)90010-4" target="_blank">Holmes &amp; Rahe, Journal of Psychosomatic Research (1967)</a></div>
+      </div>
+
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://www.eeoc.gov">EEOC — ADEA SEVERANCE REVIEW RIGHTS</a> · <a href="https://www.bls.gov/cps/cpsaat30.htm">BLS — JOB SEARCH DURATION</a> · HOLMES &amp; RAHE STRESS SCALE, JOURNAL OF PSYCHOSOMATIC RESEARCH VOL.11 (1967)
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 5 — BENEFITS QUICK REFERENCE
+============================================================ -->
+<section class="page" id="benefits">
+  <div class="page-num">04 / 09</div>
+  <div class="page-inner">
+    <div class="section-eyebrow">KNOW YOUR RIGHTS</div>
+    <h2>BENEFITS: <span class="gradient-text-green">WHAT YOU CAN CLAIM</span></h2>
+    <p style="margin-top:8px; margin-bottom:28px; font-family:var(--font-primary); font-size:11px; color:var(--muted-light); letter-spacing:0.06em;">
+      DON'T LEAVE MONEY ON THE TABLE. THESE ARE YOUR RIGHTS, NOT CHARITY.
+    </p>
+
+    <!-- COBRA -->
+    <div class="benefit-block">
+      <div class="benefit-header">
+        <span class="badge badge-crimson">⏰ DEADLINE: 60 DAYS</span>
+        <h4>COBRA — KEEP YOUR HEALTH INSURANCE</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row"><span class="benefit-key">WHAT IT IS</span><span class="benefit-val">Continue employer health coverage for up to 18 months after job loss</span></div>
+        <div class="benefit-row"><span class="benefit-key">DEADLINE</span><span class="benefit-val benefit-urgent">60 DAYS FROM NOTICE — MISSING THIS IS PERMANENT</span></div>
+        <div class="benefit-row"><span class="benefit-key">2026 AVG COST</span><span class="benefit-val">~$584/month individual · $2,000–$3,000/month family. You pay 100% + 2% admin fee.</span></div>
+        <div class="benefit-row"><span class="benefit-key">SMARTER MOVE</span><span class="benefit-val">Income dropped? Compare ACA Marketplace — you likely qualify for subsidies making premiums &lt;$100/month. Job loss = Special Enrollment Period.</span></div>
+        <div class="benefit-row"><span class="benefit-key">FILE AT</span><span class="benefit-val"><a href="https://healthcare.gov" class="benefit-link" target="_blank">healthcare.gov</a> &nbsp;— within 60 days of losing coverage</span></div>
+      </div>
+    </div>
+
+    <!-- UI -->
+    <div class="benefit-block">
+      <div class="benefit-header">
+        <span class="badge badge-gold">⚡ FILE TODAY</span>
+        <h4>UNEMPLOYMENT INSURANCE — YOUR WAGE REPLACEMENT</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row"><span class="benefit-key">WHO QUALIFIES</span><span class="benefit-val">Laid off through no fault of your own — includes federal workers under DOGE/RIF (UCFE Program)</span></div>
+        <div class="benefit-row"><span class="benefit-key">HOW MUCH</span><span class="benefit-val">~40–50% of prior wages. DC maximum: $444/week (2026)</span></div>
+        <div class="benefit-row"><span class="benefit-key">DC FILING</span><span class="benefit-val"><a href="https://does.dc.gov/page/file-claim" class="benefit-link" target="_blank">does.dc.gov/page/file-claim</a> · Federal workers: <a href="https://does.dc.gov/service/unemployment-compensation-former-federal-employees" class="benefit-link" target="_blank">UCFE Program</a></span></div>
+        <div class="benefit-row"><span class="benefit-key">ALL STATES</span><span class="benefit-val"><a href="https://www.usa.gov/unemployment-benefits" class="benefit-link" target="_blank">usa.gov/unemployment-benefits</a> · <a href="https://www.careeronestop.org/LocalHelp/UnemploymentBenefits/find-unemployment-benefits.aspx" class="benefit-link" target="_blank">careeronestop.org</a></span></div>
+        <div class="benefit-row"><span class="benefit-key">CRITICAL</span><span class="benefit-val benefit-urgent">UI DOES NOT BACK-PAY BEFORE YOUR FILING DATE. FILE THE SAME DAY.</span></div>
+      </div>
+    </div>
+
+    <!-- SNAP -->
+    <div class="benefit-block">
+      <div class="benefit-header">
+        <span class="badge badge-green">NO ASSET TEST IN DC</span>
+        <h4>SNAP — FOOD ASSISTANCE</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row"><span class="benefit-key">DC ELIGIBILITY</span><span class="benefit-val">Income at or below 200% Federal Poverty Level. No asset test — DC expanded eligibility.</span></div>
+        <div class="benefit-row"><span class="benefit-key">AVG BENEFIT</span><span class="benefit-val">$200–$400/month per household</span></div>
+        <div class="benefit-row"><span class="benefit-key">2026 NOTE</span><span class="benefit-val">ABAWD work rules begin June 1, 2026 for ages 18–54 without dependents. Check current rules.</span></div>
+        <div class="benefit-row"><span class="benefit-key">APPLY</span><span class="benefit-val"><a href="https://dhs.dc.gov/service/snap-eligibility-requirements" class="benefit-link" target="_blank">dhs.dc.gov/service/snap-eligibility-requirements</a></span></div>
+      </div>
+    </div>
+
+    <!-- Other DC Resources -->
+    <div class="card" style="padding:18px 20px; border-color:rgba(212,175,55,0.2);">
+      <h4 style="font-size:11px; color:var(--gold); margin-bottom:14px; letter-spacing:0.1em;">// OTHER DC / LOCAL RESOURCES</h4>
+      <div class="grid-2" style="gap:8px;">
+        <div class="benefit-row" style="flex-direction:column; gap:3px; padding:6px 0; border-bottom:none;">
+          <span class="benefit-key">LIHEAP UTILITY HELP</span>
+          <a href="https://doee.dc.gov" class="benefit-link" target="_blank">doee.dc.gov</a>
+        </div>
+        <div class="benefit-row" style="flex-direction:column; gap:3px; padding:6px 0; border-bottom:none;">
+          <span class="benefit-key">EMERGENCY RENTAL ASSIST.</span>
+          <a href="https://dhs.dc.gov" class="benefit-link" target="_blank">dhs.dc.gov</a>
+        </div>
+        <div class="benefit-row" style="flex-direction:column; gap:3px; padding:6px 0; border-bottom:none;">
+          <span class="benefit-key">DC AMERICAN JOB CENTER</span>
+          <a href="https://does.dc.gov/service/american-job-center" class="benefit-link" target="_blank">does.dc.gov/service/american-job-center</a>
+        </div>
+        <div class="benefit-row" style="flex-direction:column; gap:3px; padding:6px 0; border-bottom:none;">
+          <span class="benefit-key">DC WORKFORCE COUNCIL</span>
+          <a href="https://dcworks.dc.gov" class="benefit-link" target="_blank">dcworks.dc.gov</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://www.cobrainsurance.com/kb/how-much-does-cobra-insurance-cost/">COBRA INSURANCE COST 2026</a> · <a href="https://does.dc.gov/service/unemployment-compensation-former-federal-employees">DC DOES UCFE</a> · <a href="https://dhs.dc.gov/service/snap-eligibility-requirements">DC DHS SNAP</a> · <a href="https://www.fns.usda.gov/snap/allotment/cola/fy26">USDA SNAP FY2026</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 6 — FEDERAL WORKER SECTION
+============================================================ -->
+<section class="page" id="federal">
+  <div class="page-num">05 / 09</div>
+  <div class="page-inner">
+    <div class="section-eyebrow">SPECIAL PROTOCOL</div>
+    <h2>IF YOU WERE A <span class="gradient-text-gold">FEDERAL EMPLOYEE</span></h2>
+    <p style="margin-top:8px; margin-bottom:24px; font-size:14px; color:rgba(245,245,245,0.7);">
+      The DOGE-era layoffs created a category of job loss that existing guides don't cover. This section is yours.
+    </p>
+
+    <div class="card-gold" style="margin-bottom:28px;">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <span class="stat-num" style="font-size:42px; background:var(--grad-gold); -webkit-background-clip:text; background-clip:text;">279,000+</span>
+        <span style="font-size:14px; color:rgba(245,245,245,0.75); max-width:420px; line-height:1.5;">FEDERAL CIVILIAN JOBS ELIMINATED SINCE JANUARY 2025, ACROSS 27 AGENCIES.</span>
+      </div>
+      <div class="caption" style="margin-top:10px;">SOURCE: <a href="https://federalnewsnetwork.com" target="_blank" style="color:var(--gold-dark);">FEDERALNEWSNETWORK.COM, 2025</a></div>
+      <p style="margin-top:12px; font-family:var(--font-primary); font-size:13px; font-weight:700; color:var(--white); line-height:1.45;">YOU ARE NOT ALONE. THIS WAS NOT YOUR FAILURE.</p>
+    </div>
+
+    <table style="margin-bottom:24px;">
+      <thead>
+        <tr>
+          <th>YOUR RIGHT</th>
+          <th>DETAILS</th>
+          <th>WHERE TO GO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--green);">UCFE UNEMPLOYMENT</strong></td>
+          <td>Federal employees file UI under the UCFE program. Your <em>last duty station</em> determines which state's system you use.</td>
+          <td><a href="https://does.dc.gov/service/unemployment-compensation-former-federal-employees" class="mono" style="font-size:11px;" target="_blank">DC DOES UCFE</a></td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">FEHB HEALTH COVERAGE</strong></td>
+          <td><strong>31 days</strong> after separation to elect Temporary Continuation of Coverage (TCC) — the federal COBRA equivalent, up to 18 months.</td>
+          <td><a href="https://www.opm.gov/healthcare-insurance" class="mono" style="font-size:11px;" target="_blank">opm.gov/healthcare-insurance</a></td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">RIF SEVERANCE</strong></td>
+          <td>If you received an official RIF notice, severance resumed per the November 2025 shutdown-ending deal. Verify with your agency HR.</td>
+          <td><a href="https://federalnewsnetwork.com/workforce/2025/11/shutdown-ending-deal-stops-severance-freeze-for-laid-off-federal-employees/" class="mono" style="font-size:11px;" target="_blank">FEDERAL NEWS NETWORK</a></td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">WARN ACT EXEMPTION</strong></td>
+          <td>Federal agencies are <em>exempt</em> from WARN Act — you may not have received 60-day notice. Document your separation date carefully for any legal action.</td>
+          <td><a href="https://remotelaws.com/federal/warn-act/" class="mono" style="font-size:11px;" target="_blank">WARN ACT GUIDE 2026</a></td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">CIVIL SERVICE PROTECTIONS</strong></td>
+          <td>Career employees with 1+ year of service have civil service protections. If the layoff felt retaliatory or discriminatory, you have grounds to challenge.</td>
+          <td><a href="https://www.fedelaw.com/doge-layoffs/" class="mono" style="font-size:11px;" target="_blank">FEDELAW.COM/DOGE-LAYOFFS</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card-matrix">
+      <h4 style="color:var(--gold); margin-bottom:8px; font-size:12px; letter-spacing:0.08em;">// DC FEDERAL WORKER SUPPORT HUB</h4>
+      <p style="font-size:13px; color:rgba(245,245,245,0.78);">
+        DC has a dedicated federal worker support page: &nbsp;
+        <a href="https://fedsupport.dc.gov/service/federal-government-shutdown-frequently-asked-questions" class="mono" style="font-size:11px;" target="_blank">FEDSUPPORT.DC.GOV</a>
+        <br>For legal help with unlawful termination or discrimination: contact your <strong>union rep</strong>, an <strong>EEO counselor</strong>, or a federal employment attorney.
+      </p>
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://federalnewsnetwork.com">FEDERALNEWSNETWORK.COM</a> · <a href="https://www.opm.gov/healthcare-insurance">OPM.GOV</a> · <a href="https://www.fedelaw.com/doge-layoffs/">FEDELAW.COM</a> · <a href="https://fedsupport.dc.gov">FEDSUPPORT.DC.GOV</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 6 — THE BLACK BOX KEY (DORS)
+============================================================ -->
+<section class="page" id="blackbox">
+  <div class="page-num">06 / 09</div>
+  <div class="page-inner">
+    <div class="section-eyebrow" style="color:var(--gold);">HIDDEN UNLOCK</div>
+    <h2>THE <span class="gradient-text-gold">BLACK BOX KEY</span></h2>
+    <p style="max-width:640px; margin-top:10px; margin-bottom:8px; font-family:var(--font-primary); font-size:13px; font-weight:700; color:var(--white); line-height:1.55; letter-spacing:0.02em;">
+      MOST PEOPLE IN THE DMV NEVER LEARN THIS EXISTS. IT CAN TRIPLE-STACK YOUR SURVIVAL FUNDING.
+    </p>
+    <p style="max-width:640px; margin-bottom:28px; font-size:14px; color:rgba(245,245,245,0.7);">
+      The Department of Rehabilitative Services (called DORS, RSA, or DARS depending on your state) provides vocational rehabilitation funding — job training, certifications, college coursework, assistive technology, transportation, and more. It's not just for people with physical disabilities. <strong style="color:var(--white);">Neurodivergent individuals, people with anxiety/depression, chronic illness, ADHD, PTSD, learning differences — all may qualify.</strong> The threshold is whether your condition creates a barrier to employment. Not whether it's severe.
+    </p>
+
+    <!-- TRIPLE STACK DIAGRAM -->
+    <div style="margin-bottom:28px; background:rgba(212,175,55,0.04); border:1px solid rgba(212,175,55,0.2); border-radius:4px; padding:22px 24px;">
+      <h4 style="color:var(--gold); font-size:12px; letter-spacing:0.1em; margin-bottom:18px;">// THE TRIPLE STACK — LAYER YOUR BENEFITS</h4>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:28px; height:28px; background:rgba(220,20,60,0.12); border:2px solid var(--crimson); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:var(--font-primary); font-size:11px; font-weight:700; color:var(--crimson); flex-shrink:0;">1</div>
+          <div><span style="font-family:var(--font-primary); font-size:13px; font-weight:700; color:var(--white);">Unemployment Insurance (UI)</span> <span style="font-size:12px; color:rgba(245,245,245,0.6);">— ~40–50% of prior wages while you search</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-left:0;">
+          <div style="width:28px; height:1px; background:rgba(212,175,55,0.3); flex-shrink:0; margin-left:14px;"></div>
+          <span style="font-family:var(--font-primary); font-size:10px; color:var(--muted-light);">STACKED ON TOP</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:28px; height:28px; background:rgba(212,175,55,0.12); border:2px solid var(--gold); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:var(--font-primary); font-size:11px; font-weight:700; color:var(--gold); flex-shrink:0;">2</div>
+          <div><span style="font-family:var(--font-primary); font-size:13px; font-weight:700; color:var(--white);">DORS / RSA / DARS Vocational Rehab</span> <span style="font-size:12px; color:rgba(245,245,245,0.6);">— training, certs, tuition, tools, transport paid for you</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:28px; height:1px; background:rgba(0,255,65,0.3); flex-shrink:0; margin-left:14px;"></div>
+          <span style="font-family:var(--font-primary); font-size:10px; color:var(--muted-light);">STACKED ON TOP</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:28px; height:28px; background:rgba(0,255,65,0.1); border:2px solid var(--green); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:var(--font-primary); font-size:11px; font-weight:700; color:var(--green); flex-shrink:0;">3</div>
+          <div><span style="font-family:var(--font-primary); font-size:13px; font-weight:700; color:var(--white);">Local Emergency Assistance</span> <span style="font-size:12px; color:rgba(245,245,245,0.6);">— SNAP, food pantries, LIHEAP, rental assistance simultaneously</span></div>
+        </div>
+      </div>
+      <div style="margin-top:16px; padding:12px 16px; background:rgba(0,255,65,0.05); border:1px solid rgba(0,255,65,0.15); border-radius:3px;">
+        <span style="font-family:var(--font-primary); font-size:11px; color:var(--green); letter-spacing:0.06em;">ALL THREE ARE LEGAL TO RECEIVE SIMULTANEOUSLY. NONE DISQUALIFIES THE OTHERS.</span>
+      </div>
+    </div>
+
+    <!-- WHAT DORS CAN PAY FOR -->
+    <div class="grid-2" style="gap:14px; margin-bottom:24px;">
+      <div class="card-gold">
+        <h4 style="font-size:11px; color:var(--gold); letter-spacing:0.1em; margin-bottom:12px;">// WHAT DORS CAN PAY FOR</h4>
+        <ul class="feature-list">
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>College courses or degree programs</span></li>
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>Certifications (AWS, PMP, bootcamps, etc.)</span></li>
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>Assistive technology &amp; software</span></li>
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>Transportation to work or training</span></li>
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>Job coaching &amp; placement support</span></li>
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>Business startup costs (self-employment)</span></li>
+          <li><div class="feature-icon" style="background:rgba(212,175,55,0.1); border-color:var(--gold-dark); color:var(--gold);">✓</div><span>Work clothing, tools, equipment</span></li>
+        </ul>
+      </div>
+      <div class="card-green">
+        <h4 style="font-size:11px; color:var(--green); letter-spacing:0.1em; margin-bottom:12px;">// WHO QUALIFIES (BROADER THAN YOU THINK)</h4>
+        <ul class="feature-list">
+          <li><div class="feature-icon">→</div><span>ADHD / ADD — documented</span></li>
+          <li><div class="feature-icon">→</div><span>Anxiety &amp; depression (clinical)</span></li>
+          <li><div class="feature-icon">→</div><span>PTSD / trauma history</span></li>
+          <li><div class="feature-icon">→</div><span>Autism / neurodivergence</span></li>
+          <li><div class="feature-icon">→</div><span>Chronic pain or illness</span></li>
+          <li><div class="feature-icon">→</div><span>Learning disabilities</span></li>
+          <li><div class="feature-icon">→</div><span>Substance use recovery</span></li>
+          <li><div class="feature-icon">→</div><span>TBI (traumatic brain injury)</span></li>
+        </ul>
+        <div style="margin-top:14px; font-family:var(--font-primary); font-size:10px; color:var(--muted-light); line-height:1.7; letter-spacing:0.04em;">
+          YOU DO NOT NEED A SEVERE DIAGNOSIS. YOU NEED TO SHOW THAT YOUR CONDITION CREATES A <span style="color:var(--green);">BARRIER TO EMPLOYMENT.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO APPLY TABLE -->
+    <h3 style="font-size:13px; color:var(--gold); margin-bottom:14px; letter-spacing:0.08em;">// HOW TO ACCESS THE BLACK BOX KEY — BY STATE</h3>
+    <table style="margin-bottom:20px;">
+      <thead>
+        <tr>
+          <th>STATE</th>
+          <th>AGENCY NAME</th>
+          <th>MAGIC PHRASE TO SAY</th>
+          <th>CONTACT / APPLY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--green);">DC</strong></td>
+          <td>RSA — Rehabilitation Services Administration<br><span style="font-size:11px; color:var(--muted-light);">(under DC Dept of Disability Services)</span></td>
+          <td><span style="font-family:var(--font-primary); font-size:11px; color:var(--gold);">"I want to apply for vocational rehabilitation services"</span></td>
+          <td>
+            <a href="https://dds.dc.gov/service/how-apply-rsa-services" class="benefit-link" target="_blank">dds.dc.gov/service/how-apply-rsa-services</a><br>
+            <span style="font-size:11px; color:var(--muted-light);">202-442-8400</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">MD</strong></td>
+          <td>DORS — Division of Rehabilitation Services<br><span style="font-size:11px; color:var(--muted-light);">(under Maryland State Dept of Education)</span></td>
+          <td><span style="font-family:var(--font-primary); font-size:11px; color:var(--gold);">"I want to apply for vocational rehabilitation services"</span></td>
+          <td>
+            <a href="https://dors.maryland.gov" class="benefit-link" target="_blank">dors.maryland.gov</a><br>
+            <span style="font-size:11px; color:var(--muted-light);">410-554-9400 · 1-888-554-0334 TTY</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">VA</strong></td>
+          <td>DARS — Dept for Aging and Rehabilitative Services<br><span style="font-size:11px; color:var(--muted-light);">(Division of Rehabilitative Services)</span></td>
+          <td><span style="font-family:var(--font-primary); font-size:11px; color:var(--gold);">"I want to apply for vocational rehabilitation services"</span></td>
+          <td>
+            <a href="https://www.dars.virginia.gov/drs/vr/" class="benefit-link" target="_blank">dars.virginia.gov/drs/vr</a><br>
+            <span style="font-size:11px; color:var(--muted-light);">1-800-552-5019</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card-matrix">
+      <h4 style="color:var(--gold); font-size:11px; letter-spacing:0.1em; margin-bottom:8px;">// THE SCRIPT — SAY EXACTLY THIS WHEN YOU CALL</h4>
+      <div class="code-block" style="padding:16px 18px; font-size:12px; line-height:1.8;">
+<span class="comment">// CALL YOUR STATE'S OFFICE. SAY:</span>
+
+<span class="string">"Hi, my name is [NAME]. I recently lost my job and I have a
+[diagnosed condition / disability / documented health issue]
+that has been a barrier to my employment. I would like to
+apply for vocational rehabilitation services and schedule
+an intake appointment."</span>
+
+<span class="comment">// THAT'S IT. THEY WILL TAKE IT FROM THERE.</span>
+<span class="comment">// YOU DO NOT NEED TO PROVE SEVERITY UPFRONT — JUST GET TO INTAKE.</span>
+      </div>
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://dds.dc.gov/service/how-apply-rsa-services">DC DDS — RSA SERVICES</a> · <a href="https://dors.maryland.gov/consumers/Pages/about.aspx">MARYLAND DORS</a> · <a href="https://www.dars.virginia.gov/drs/vr/">VIRGINIA DARS VR</a> · <a href="https://rsa.ed.gov/program/basic-vr">US DEPT OF EDUCATION — VOCATIONAL REHABILITATION STATE GRANTS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 7 — DMV FOOD & EMERGENCY RESOURCE NETWORK
+============================================================ -->
+<section class="page" id="dmv">
+  <div class="page-num">07 / 09</div>
+  <div class="page-inner">
+    <div class="section-eyebrow" style="color:var(--lime);">REGIONAL NETWORK</div>
+    <h2>DMV FOOD + EMERGENCY <span class="gradient-text-green">RESOURCE MAP</span></h2>
+    <p style="margin-top:8px; margin-bottom:28px; font-family:var(--font-primary); font-size:11px; color:var(--muted-light); letter-spacing:0.06em;">
+      DC · MARYLAND · VIRGINIA — FREE FOOD, EMERGENCY PROGRAMS, AND LOCAL LIFELINES. NO INCOME PROOF REQUIRED AT MOST LOCATIONS.
+    </p>
+
+    <!-- MASTER LOCATOR -->
+    <div class="card-gold" style="margin-bottom:22px;">
+      <h4 style="font-size:12px; color:var(--gold); letter-spacing:0.08em; margin-bottom:10px;">// START HERE — UNIVERSAL FOOD FINDER TOOLS</h4>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div class="benefit-row" style="padding:5px 0; border-bottom:1px solid rgba(212,175,55,0.1);">
+          <span class="benefit-key" style="min-width:160px;">CAPITAL AREA FOOD BANK</span>
+          <span class="benefit-val">450+ partner sites across DC, MD &amp; VA. Find your nearest distribution: <a href="https://www.capitalareafoodbank.org" class="benefit-link" target="_blank">capitalareafoodbank.org</a> · 202-769-5300</span>
+        </div>
+        <div class="benefit-row" style="padding:5px 0; border-bottom:1px solid rgba(212,175,55,0.1);">
+          <span class="benefit-key" style="min-width:160px;">FEEDING AMERICA</span>
+          <span class="benefit-val">National food bank locator — enter your zip: <a href="https://www.feedingamerica.org/find-your-local-foodbank" class="benefit-link" target="_blank">feedingamerica.org/find-your-local-foodbank</a></span>
+        </div>
+        <div class="benefit-row" style="padding:5px 0; border-bottom:1px solid rgba(212,175,55,0.1);">
+          <span class="benefit-key" style="min-width:160px;">FINDHELP.ORG</span>
+          <span class="benefit-val">Search all local food, housing, utility programs by zip: <a href="https://www.findhelp.org" class="benefit-link" target="_blank">findhelp.org</a></span>
+        </div>
+        <div class="benefit-row" style="padding:5px 0;">
+          <span class="benefit-key" style="min-width:160px;">DIAL 211</span>
+          <span class="benefit-val">Free, 24/7. Local food, housing, utility, and emergency help. Works in all DMV jurisdictions. Text your zip to 898-211.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DC SECTION -->
+    <div class="benefit-block" style="margin-bottom:16px;">
+      <div class="benefit-header" style="background:rgba(0,255,65,0.07); border-color:rgba(0,255,65,0.14);">
+        <span class="badge badge-green">WASHINGTON DC</span>
+        <h4>DC FOOD + EMERGENCY PROGRAMS</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row">
+          <span class="benefit-key">BREAD FOR THE CITY</span>
+          <span class="benefit-val">Free grocery shopping (choose your items). No income verification required at intake. Two DC locations.
+            <a href="https://breadforthecity.org/food/" class="benefit-link" target="_blank">breadforthecity.org/food</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">THRIVE DC PANTRY</span>
+          <span class="benefit-val">Appointment-based in 2026. Email: <span style="font-family:var(--font-primary); font-size:11px; color:var(--green);">pantry@thrivedc.org</span>
+            <a href="https://www.thrivedc.org" class="benefit-link" target="_blank">thrivedc.org</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">DC FOOD PROJECT</span>
+          <span class="benefit-val">Emergency food access map and rotating distributions.
+            <a href="https://dcfoodproject.org/emergency-food-access" class="benefit-link" target="_blank">dcfoodproject.org/emergency-food-access</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">DC HUNGER SOLUTIONS</span>
+          <span class="benefit-val">Resource hub linking to all DC food programs, SNAP enrollment help, and community meals.
+            <a href="https://www.dchunger.org/get-help-resources/" class="benefit-link" target="_blank">dchunger.org/get-help-resources</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">DC GOV FOOD PAGE</span>
+          <span class="benefit-val">Official DC food assistance portal — SNAP, TEFAP, WIC, senior programs.
+            <a href="https://dc.gov/page/food-assistance" class="benefit-link" target="_blank">dc.gov/page/food-assistance</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">SHARE FOOD PACKAGES</span>
+          <span class="benefit-val">$30 package = up to $50 in groceries. No income test, no ID required. Open to anyone.
+            <a href="https://www.capitalareafoodbank.org" class="benefit-link" target="_blank">capitalareafoodbank.org</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">DC EMERGENCY RENTAL</span>
+          <span class="benefit-val">STAY DC — emergency rental + utility assistance for DC residents.
+            <a href="https://stay.dc.gov" class="benefit-link" target="_blank">stay.dc.gov</a></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARYLAND SECTION -->
+    <div class="benefit-block" style="margin-bottom:16px;">
+      <div class="benefit-header" style="background:rgba(191,255,0,0.05); border-color:rgba(191,255,0,0.15);">
+        <span class="badge badge-lime" style="background:rgba(191,255,0,0.08); border-color:rgba(191,255,0,0.3); color:var(--lime);">MARYLAND</span>
+        <h4>MARYLAND (PG + MONTGOMERY + BROADER DMV)</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row">
+          <span class="benefit-key">MD FED WORKERS HUB</span>
+          <span class="benefit-val">Maryland's dedicated federal worker support page — food, cash, DORS, UI fast-track.
+            <a href="https://response.maryland.gov/federalpublicservants" class="benefit-link" target="_blank">response.maryland.gov/federalpublicservants</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">MD HUNGER SOLUTIONS</span>
+          <span class="benefit-val">Find food near you + SNAP enrollment navigation.
+            <a href="https://www.mdhungersolutions.org/get-help/" class="benefit-link" target="_blank">mdhungersolutions.org/get-help</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">PG COUNTY FOOD EQUITY</span>
+          <span class="benefit-val">Free groceries, diapers, formula, hygiene products. 30+ community pantries.
+            <a href="https://pgcfec.org/resources/find-food-food-pantry-listings/" class="benefit-link" target="_blank">pgcfec.org</a> · 301-909-6343</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">MANNA FOOD CENTER</span>
+          <span class="benefit-val">Fresh produce, groceries, nonperishables. Silver Spring/Montgomery County.
+            <a href="https://mannafood.org" class="benefit-link" target="_blank">mannafood.org</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">MONTGOMERY FOOD COUNCIL</span>
+          <span class="benefit-val">Interactive food resource map for all of Montgomery County.
+            <a href="https://mocofoodcouncil.org/map/" class="benefit-link" target="_blank">mocofoodcouncil.org/map</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">FOOD RESCUE BANK MOCO</span>
+          <span class="benefit-val">Free fresh food giveaways in underserved communities. Montgomery County.
+            <a href="https://sowhatelse.org/food-rescue-bank/montgomery-county-services/" class="benefit-link" target="_blank">sowhatelse.org</a> · (240) 705-4345</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">211 MD</span>
+          <span class="benefit-val">Find all Maryland emergency resources instantly.
+            <a href="https://211md.org" class="benefit-link" target="_blank">211md.org</a> · Call or text 211</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIRGINIA SECTION -->
+    <div class="benefit-block" style="margin-bottom:20px;">
+      <div class="benefit-header" style="background:rgba(212,175,55,0.05); border-color:rgba(212,175,55,0.15);">
+        <span class="badge badge-gold">VIRGINIA</span>
+        <h4>NORTHERN VIRGINIA (FAIRFAX · ARLINGTON · ALEXANDRIA)</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row">
+          <span class="benefit-key">VA FOOD BANKS</span>
+          <span class="benefit-val">Find any food bank or pantry in VA by zip code.
+            <a href="https://vafoodbanks.org/find-food/" class="benefit-link" target="_blank">vafoodbanks.org/find-food</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">AFAC — ARLINGTON</span>
+          <span class="benefit-val">Arlington Food Assistance Center — free supplemental groceries weekly for Arlington residents.
+            <a href="https://afac.org" class="benefit-link" target="_blank">afac.org</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">ALIVE! — ALEXANDRIA</span>
+          <span class="benefit-val">Food program in Alexandria. Home delivery available for seniors, disabled, and single parents.
+            <a href="https://www.alive-inc.org/food-program-in-alexandria-virginia/" class="benefit-link" target="_blank">alive-inc.org</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">CORNERSTONES VA</span>
+          <span class="benefit-val">Free From Hunger Center serving Reston/Herndon area, Fairfax County.
+            <a href="https://www.cornerstonesva.org/services/free-from-hunger-center/" class="benefit-link" target="_blank">cornerstonesva.org</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">FAITH SOCIAL SERVICES</span>
+          <span class="benefit-val">Food pantry in Herndon, VA — NO income limits or restrictions. Open during designated hours, any household.
+            <a href="https://www.faithus.org/how-we-serve/food-programs/" class="benefit-link" target="_blank">faithus.org/food-programs</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">NOVA FOOD RESCUE</span>
+          <span class="benefit-val">Regional network of food donors, volunteers, and distribution sites across Northern Virginia.
+            <a href="https://nova-fr.org/" class="benefit-link" target="_blank">nova-fr.org</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://www.capitalareafoodbank.org">CAPITAL AREA FOOD BANK</a> · <a href="https://dc.gov/page/food-assistance">DC.GOV FOOD ASSISTANCE</a> · <a href="https://response.maryland.gov/federalpublicservants/food-cash-and-other-assistance">RESPONSE.MARYLAND.GOV</a> · <a href="https://pgcfec.org/resources/find-food-food-pantry-listings/">PG COUNTY FEC</a> · <a href="https://mocofoodcouncil.org/map/">MONTGOMERY FOOD COUNCIL</a> · <a href="https://afac.org">AFAC ARLINGTON</a> · <a href="https://vafoodbanks.org/find-food/">VA FOOD BANKS</a> · <a href="https://www.dchunger.org/get-help-resources/">DC HUNGER SOLUTIONS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 8 — WORKFORCE PROGRAMS: WIOA / TAA / GRANTS
+============================================================ -->
+<section class="page" id="workforce">
+  <div class="page-num">08 / 10</div>
+  <div class="page-inner">
+    <div class="section-eyebrow" style="color:var(--lime);">FUNDING UNLOCKS</div>
+    <h2>WORKFORCE PROGRAMS: <span class="gradient-text-green">MONEY YOU'RE LEAVING BEHIND</span></h2>
+    <p style="max-width:680px; margin-top:8px; margin-bottom:28px; font-size:14px; color:rgba(245,245,245,0.7);">
+      Beyond unemployment and SNAP, there are federally-funded workforce programs that can pay for your retraining, certifications, and job search — directly. Most people never apply because they don't know they exist.
+    </p>
+
+    <!-- WIOA -->
+    <div class="benefit-block" style="margin-bottom:16px;">
+      <div class="benefit-header">
+        <span class="badge badge-green">KEY PROGRAM</span>
+        <h4>WIOA — WORKFORCE INNOVATION AND OPPORTUNITY ACT</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row">
+          <span class="benefit-key">WHAT IT IS</span>
+          <span class="benefit-val">Federal program providing career counseling, job training vouchers (ITAs — Individual Training Accounts), resume help, job placement, and supportive services to adults and dislocated workers.</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">WHO QUALIFIES</span>
+          <span class="benefit-val"><strong style="color:var(--white);">Dislocated Worker track:</strong> If you lost your job through no fault of your own (layoff, company closure, federal RIF) — you qualify regardless of income. <strong style="color:var(--white);">Adult track:</strong> 18+ with barriers to employment.</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">WHAT IT PAYS FOR</span>
+          <span class="benefit-val">Approved training programs, certifications, community college, apprenticeships, on-the-job training (OJT), work readiness, supportive services (transport, childcare), paid work experience.</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">DC</span>
+          <span class="benefit-val">
+            <a href="https://dcworks.dc.gov/page/wioa-adult-and-dislocated-worker-training-services" class="benefit-link" target="_blank">dcworks.dc.gov — WIOA Training Services</a> &nbsp;·&nbsp;
+            <a href="https://does.dc.gov/service/american-job-center" class="benefit-link" target="_blank">DC American Job Centers (appointment required)</a>
+          </span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">MARYLAND</span>
+          <span class="benefit-val">
+            <a href="https://www.dllr.state.md.us/employment/wioa.shtml" class="benefit-link" target="_blank">labor.maryland.gov/employment/wioa.shtml</a> &nbsp;·&nbsp;
+            <a href="https://www.mdworks.com" class="benefit-link" target="_blank">mdworks.com — Maryland Workforce Exchange</a>
+          </span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">VIRGINIA</span>
+          <span class="benefit-val">
+            <a href="https://virginiacareerworks.com/rapid-response/" class="benefit-link" target="_blank">virginiacareerworks.com — Rapid Response</a> &nbsp;·&nbsp;
+            <a href="https://www.dol.gov/agencies/eta/workforce-investment/adult" class="benefit-link" target="_blank">DOL WIOA Adult Program</a>
+          </span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">HOW TO ACCESS</span>
+          <span class="benefit-val benefit-urgent">WALK INTO OR CALL YOUR LOCAL AMERICAN JOB CENTER. ASK FOR A WIOA DISLOCATED WORKER ASSESSMENT. FREE, NO COST.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAA -->
+    <div class="benefit-block" style="margin-bottom:16px;">
+      <div class="benefit-header" style="background:rgba(212,175,55,0.06); border-color:rgba(212,175,55,0.15);">
+        <span class="badge badge-gold">TRADE DISPLACED</span>
+        <h4>TAA — TRADE ADJUSTMENT ASSISTANCE</h4>
+      </div>
+      <div class="benefit-body">
+        <div class="benefit-row">
+          <span class="benefit-key">WHAT IT IS</span>
+          <span class="benefit-val">Federal program for workers who lost jobs due to increased imports, outsourcing, or shifts in trade policy. Provides training, income support (TRA — Trade Readjustment Allowances), job search, and relocation allowances.</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">WHO QUALIFIES</span>
+          <span class="benefit-val">Workers whose jobs moved offshore, were eliminated due to foreign competition, or whose employer shifted production to a country with which the US has a trade agreement. A <strong style="color:var(--white);">petition of 3+ workers</strong> must be filed — your union rep, HR, or you + coworkers can file together.</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">BENEFITS</span>
+          <span class="benefit-val">Up to 130 weeks of income support (TRA) during approved training · Full tuition reimbursement · Job search allowance up to $1,500 · Relocation allowance up to 90% of moving costs · HCTC (Health Coverage Tax Credit) for COBRA costs</span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">DC</span>
+          <span class="benefit-val"><a href="https://does.dc.gov/service/trade-adjustment-assistance" class="benefit-link" target="_blank">does.dc.gov/service/trade-adjustment-assistance</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">MARYLAND</span>
+          <span class="benefit-val"><a href="https://labor.maryland.gov/employment/taa.shtml" class="benefit-link" target="_blank">labor.maryland.gov/employment/taa.shtml</a></span>
+        </div>
+        <div class="benefit-row">
+          <span class="benefit-key">FEDERAL FILING</span>
+          <span class="benefit-val">
+            <a href="https://www.dol.gov/agencies/eta/tradeact" class="benefit-link" target="_blank">dol.gov/agencies/eta/tradeact</a> &nbsp;·&nbsp;
+            Email: <span style="font-family:var(--font-primary); font-size:11px; color:var(--green);">taa.petition@dol.gov</span> &nbsp;·&nbsp; Phone: 1-888-365-6822
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKFORCE PELL + OTHER GRANTS -->
+    <div class="grid-2" style="gap:14px; margin-bottom:20px;">
+
+      <div class="benefit-block">
+        <div class="benefit-header" style="background:rgba(191,255,0,0.05); border-color:rgba(191,255,0,0.12);">
+          <span class="badge badge-lime" style="background:rgba(191,255,0,0.08); border-color:rgba(191,255,0,0.3); color:var(--lime);">NEW 2026</span>
+          <h4>WORKFORCE PELL GRANT</h4>
+        </div>
+        <div class="benefit-body" style="padding:14px 16px;">
+          <div class="benefit-row" style="flex-direction:column; gap:4px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:10px; margin-bottom:10px;">
+            <span class="benefit-key">WHAT IT IS</span>
+            <span class="benefit-val" style="font-size:12px;">Starting <strong style="color:var(--lime);">July 1, 2026</strong>, Pell Grants can fund short-term training programs (8–15 weeks, 150–599 hours). IT, healthcare, skilled trades, early childhood ed. Even if you already have a bachelor's degree.</span>
+          </div>
+          <div class="benefit-row" style="flex-direction:column; gap:4px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:10px; margin-bottom:10px;">
+            <span class="benefit-key">HOW TO APPLY</span>
+            <span class="benefit-val" style="font-size:12px;">File FAFSA at <a href="https://studentaid.gov" class="benefit-link" target="_blank">studentaid.gov</a>. Income from unemployment counts — apply regardless. Award is based on financial need.</span>
+          </div>
+          <div class="benefit-row" style="flex-direction:column; gap:4px;">
+            <span class="benefit-key">NOTE</span>
+            <span class="benefit-val" style="font-size:12px; color:var(--lime);">Stackable with WIOA ITAs. Double-fund your retraining.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="benefit-block">
+        <div class="benefit-header">
+          <span class="badge badge-green">DMV SPECIFIC</span>
+          <h4>OTHER AVAILABLE BENEFITS + GRANTS</h4>
+        </div>
+        <div class="benefit-body" style="padding:14px 16px;">
+          <div class="benefit-row" style="flex-direction:column; gap:3px; border-bottom:1px solid rgba(255,255,255,0.05); padding:6px 0;">
+            <span class="benefit-key">DC: RAPID RESPONSE</span>
+            <span class="benefit-val" style="font-size:12px;">Immediate services for mass layoffs. Contact DC DOES within days of a layoff notice: <a href="https://does.dc.gov/service/dislocated-worker" class="benefit-link" target="_blank">does.dc.gov/service/dislocated-worker</a></span>
+          </div>
+          <div class="benefit-row" style="flex-direction:column; gap:3px; border-bottom:1px solid rgba(255,255,255,0.05); padding:6px 0;">
+            <span class="benefit-key">MD: FEDERAL LOAN $700</span>
+            <span class="benefit-val" style="font-size:12px;">Interest-free $700 hardship loan for affected federal workers, 180-day repayment. <a href="https://response.maryland.gov/federalpublicservants" class="benefit-link" target="_blank">response.maryland.gov/federalpublicservants</a></span>
+          </div>
+          <div class="benefit-row" style="flex-direction:column; gap:3px; border-bottom:1px solid rgba(255,255,255,0.05); padding:6px 0;">
+            <span class="benefit-key">VA: RAPID RESPONSE</span>
+            <span class="benefit-val" style="font-size:12px;">Staff restructuring, retraining funding, job search. <a href="https://virginiacareerworks.com/rapid-response/" class="benefit-link" target="_blank">virginiacareerworks.com</a></span>
+          </div>
+          <div class="benefit-row" style="flex-direction:column; gap:3px; border-bottom:1px solid rgba(255,255,255,0.05); padding:6px 0;">
+            <span class="benefit-key">NATIONAL DWG</span>
+            <span class="benefit-val" style="font-size:12px;">National Dislocated Worker Grants — supplemental federal funding released during mass layoff events. Check: <a href="https://www.dol.gov/agencies/eta/dislocated-workers" class="benefit-link" target="_blank">dol.gov/agencies/eta/dislocated-workers</a></span>
+          </div>
+          <div class="benefit-row" style="flex-direction:column; gap:3px; padding:6px 0;">
+            <span class="benefit-key">STUDENT LOAN PAUSE</span>
+            <span class="benefit-val" style="font-size:12px;">Income-driven repayment + administrative forbearance available. Recertify at <a href="https://studentaid.gov/idr/" class="benefit-link" target="_blank">studentaid.gov/idr</a></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- QUICK STACK CALLOUT -->
+    <div class="card-matrix" style="padding:20px 24px;">
+      <h4 style="color:var(--lime); font-size:11px; letter-spacing:0.1em; margin-bottom:12px;">// THE FULL STACK — COMBINE ALL OF THESE SIMULTANEOUSLY</h4>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="badge badge-crimson">UI / UCFE</span>
+        <span style="color:var(--muted-light); font-family:var(--font-primary); font-size:11px; align-self:center;">+</span>
+        <span class="badge badge-gold">DORS / RSA / DARS</span>
+        <span style="color:var(--muted-light); font-family:var(--font-primary); font-size:11px; align-self:center;">+</span>
+        <span class="badge badge-green">WIOA ITA</span>
+        <span style="color:var(--muted-light); font-family:var(--font-primary); font-size:11px; align-self:center;">+</span>
+        <span class="badge badge-lime" style="background:rgba(191,255,0,0.08); border-color:rgba(191,255,0,0.3); color:var(--lime);">WORKFORCE PELL</span>
+        <span style="color:var(--muted-light); font-family:var(--font-primary); font-size:11px; align-self:center;">+</span>
+        <span class="badge badge-green">SNAP + FOOD NETWORK</span>
+        <span style="color:var(--muted-light); font-family:var(--font-primary); font-size:11px; align-self:center;">+</span>
+        <span class="badge badge-gold">TAA (if trade-displaced)</span>
+      </div>
+      <p style="margin-top:12px; font-family:var(--font-primary); font-size:11px; color:rgba(245,245,245,0.65); line-height:1.7; letter-spacing:0.03em;">
+        NONE OF THESE PROGRAMS DISQUALIFY THE OTHERS. THE SYSTEM IS DESIGNED TO BE STACKED. USE ALL OF IT.
+      </p>
+    </div>
+
+    <div class="source-bar">
+      SOURCES: <a href="https://www.dol.gov/agencies/eta/wioa">DOL.GOV — WIOA</a> · <a href="https://dcworks.dc.gov/page/wioa-adult-and-dislocated-worker-training-services">DC WORKS — WIOA TRAINING</a> · <a href="https://does.dc.gov/service/trade-adjustment-assistance">DC DOES — TAA</a> · <a href="https://labor.maryland.gov/employment/taa.shtml">MD LABOR — TAA</a> · <a href="https://www.dol.gov/agencies/eta/tradeact">DOL.GOV — TRADE ACT PROGRAMS</a> · <a href="https://money.com/workforce-pell-grants-changes-2026/">WORKFORCE PELL GRANT 2026</a> · <a href="https://virginiacareerworks.com/rapid-response/">VA RAPID RESPONSE</a> · <a href="https://www.dol.gov/agencies/eta/dislocated-workers">DOL — NATIONAL DWG</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 7 — AI PROMPTS
+============================================================ -->
+<section class="page" id="ai-prompt">
+  <div class="page-num">09 / 10</div>
+  <div class="page-inner">
+    <div class="section-eyebrow">AI TOOLS</div>
+    <h2>YOU DON'T HAVE TO <span class="gradient-text-green">FIGURE THIS OUT ALONE</span></h2>
+    <p style="margin-top:8px; margin-bottom:28px; font-size:14px; color:rgba(245,245,245,0.7);">
+      Copy a prompt. Paste it into ChatGPT, Claude, or Gemini. Let AI help you think when your brain is in survival mode.
+    </p>
+
+    <div class="card-green" style="margin-bottom:18px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+        <h4 style="font-size:13px; color:var(--green);">⚡ QUICK PROMPT — USE THIS FIRST</h4>
+        <span class="badge badge-green">COPY &amp; PASTE</span>
+      </div>
+      <div class="code-block">
+<span class="comment">// FILL IN THE [BRACKETS]. PASTE INTO CHATGPT, CLAUDE, OR GEMINI.</span>
+
+I just lost my job today. I'm feeling <span class="var">[overwhelmed / scared / numb / relieved / angry]</span>.
+I worked as a <span class="var">[your job title]</span> for <span class="var">[X years]</span>, earning ~$<span class="var">[salary]</span>.
+I live in <span class="var">[city/state]</span>. I have <span class="var">[X months]</span> of savings.
+
+<span class="keyword">Help me:</span>
+<span class="keyword">1.</span> List the 5 most urgent things I need to do in the next 48 hours
+<span class="keyword">2.</span> Tell me what benefits I likely qualify for based on my income + location
+<span class="keyword">3.</span> Help me write a short, honest response to give people who ask what happened
+<span class="keyword">4.</span> Remind me of 3 things still true and professionally valuable about me
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+        <h4 style="font-size:13px; color:var(--gold);">🔍 DEEPER PROMPT — WHEN YOU'RE READY (DAY 2+)</h4>
+        <span class="badge badge-gold">FINANCIAL PLANNING</span>
+      </div>
+      <div class="code-block">
+<span class="comment">// USE AFTER YOU'VE COMPLETED THE CHECKLIST.</span>
+
+I've been laid off for <span class="var">[X days]</span>. Immediate logistics are handled.
+I need help thinking through:
+
+- Financial runway: $<span class="var">[savings]</span> saved, $<span class="var">[expenses]</span>/month in expenses
+- Whether to job search, pivot careers, or try contract/freelance
+- How to update LinkedIn without looking desperate
+- What to prioritize in week 2
+
+My background: <span class="var">[2–3 sentence career summary]</span>
+
+<span class="string">Ask me clarifying questions. Help me think step by step.</span>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px; margin-bottom:20px;">
+      <div class="card" style="padding:18px;">
+        <span class="badge badge-lime" style="margin-bottom:12px; display:block; width:fit-content; border-color:rgba(191,255,0,0.3); color:var(--lime); background:rgba(191,255,0,0.06);">FOR DC / FEDERAL WORKERS</span>
+        <div class="code-block" style="padding:14px; font-size:11.5px; line-height:1.7;">
+I'm a former <span class="var">[agency]</span> employee,
+laid off <span class="var">[month/year]</span>, GS-<span class="var">[level]</span>.
+Help me understand UCFE unemployment,
+FEHB continuation, and how to translate
+federal experience to private-sector.
+        </div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <span class="badge badge-crimson" style="margin-bottom:12px; display:block; width:fit-content;">EMOTIONAL SUPPORT</span>
+        <div class="code-block" style="padding:14px; font-size:11.5px; line-height:1.7;">
+I'm struggling with shame + identity
+loss after <span class="var">[X years]</span> in my career.
+Help me process this — no toxic
+positivity. I want honesty AND
+realistic first steps forward.
+        </div>
+      </div>
+    </div>
+
+    <div class="card-gold">
+      <p style="font-size:13px; color:rgba(245,245,245,0.72); font-family:var(--font-primary); font-size:11px; line-height:1.8; letter-spacing:0.04em;">
+        WORKS WITH: &nbsp;
+        <a href="https://chat.openai.com" target="_blank" style="color:var(--green);">CHAT.OPENAI.COM</a> &nbsp;·&nbsp;
+        <a href="https://claude.ai" target="_blank" style="color:var(--green);">CLAUDE.AI</a> &nbsp;·&nbsp;
+        <a href="https://gemini.google.com" target="_blank" style="color:var(--green);">GEMINI.GOOGLE.COM</a>
+        <br>THE <strong style="color:var(--gold);">FULL AI JOB LOSS SURVIVAL GUIDE</strong> INCLUDES 30+ PROMPTS + GEMINI LIVE VOICE ASSISTANT.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 8 — WHAT'S NEXT / CTA
+============================================================ -->
+<section class="page" id="next" style="background: var(--grad-matrix); text-align:center; align-items:center;">
+  <div class="scan-line" style="top:20%;"></div>
+  <div class="scan-line" style="top:80%;"></div>
+  <div class="page-num">10 / 10</div>
+  <div class="page-inner">
+
+    <div style="font-family:var(--font-primary); font-size:32px; font-weight:700; color:var(--green); margin-bottom:8px;">✦</div>
+    <h2 style="font-size:clamp(24px,3.5vw,36px);">YOU MADE IT THROUGH <span class="gradient-text-green">DAY ZERO</span>.</h2>
+    <p style="max-width:560px; margin:16px auto 36px; font-size:14px; color:rgba(245,245,245,0.68); line-height:1.75; font-family:var(--font-primary); font-size:13px; letter-spacing:0.02em;">
+      THIS TOOLKIT WAS DESIGNED TO KEEP YOU FROM MAKING IRREVERSIBLE DECISIONS IN THE FIRST 48 HOURS. IF IT HELPED — THERE'S MORE.
+    </p>
+
+    <div class="card" style="text-align:left; margin-bottom:32px; max-width:640px; margin-left:auto; margin-right:auto;">
+      <h3 style="font-size:15px; margin-bottom:18px; color:var(--gold);">// WHAT'S IN THE COMPLETE GUIDE</h3>
+      <ul class="feature-list">
+        <li><div class="feature-icon">01</div><span><strong style="color:var(--white);">Crisis Triage Module</strong> — Expanded 48-hr toolkit with audio walkthrough</span></li>
+        <li><div class="feature-icon">02</div><span><strong style="color:var(--white);">Complete Benefits Navigator</strong> — SNAP, COBRA, ACA, LIHEAP, Medicaid, DC &amp; Federal-specific</span></li>
+        <li><div class="feature-icon">03</div><span><strong style="color:var(--white);">Financial Runway Planner</strong> — Google Sheets template with 90-day scenario modeling</span></li>
+        <li><div class="feature-icon">04</div><span><strong style="color:var(--white);">Identity &amp; Mindset Reset</strong> — AI journaling, reframing exercises, personal brand audit</span></li>
+        <li><div class="feature-icon">05</div><span><strong style="color:var(--white);">Job Search Launchpad</strong> — ATS resume, LinkedIn, federal-to-private sector translation guide</span></li>
+        <li><div class="feature-icon">✦</div><span><strong style="color:var(--gold);">Gemini Live AI Assistant</strong> — 30+ prompts + real-time voice guidance</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="btn btn-gold" style="font-size:13px; padding:16px 40px; margin-bottom:48px; letter-spacing:0.1em;">
+      GET THE FULL GUIDE → <span style="opacity:0.7; font-size:10px;">&nbsp;COMING SOON</span>
+    </a>
+
+    <div class="divider-gold" style="max-width:400px; margin:0 auto 36px;"></div>
+
+    <blockquote style="font-family:var(--font-primary); font-size:clamp(16px,2.5vw,22px); font-weight:700; color:var(--green); line-height:1.4; max-width:480px; margin:0 auto 12px; letter-spacing:0.02em;">
+      "YOUR LAYOFF IS A PLOT TWIST.<br><span style="color:var(--gold);">NOT THE END.</span>"
+    </blockquote>
+    <div class="caption">— SIERRA NAPIER, THME &nbsp;·&nbsp; THE ROBIN HOOD OF AI &nbsp;·&nbsp; 2026</div>
+
+    <div style="margin-top:40px; display:flex; justify-content:center; gap:28px; flex-wrap:wrap;">
+      <a href="https://does.dc.gov/page/file-claim" target="_blank" class="mono" style="font-size:11px; color:var(--muted-light);">FILE FOR UI →</a>
+      <a href="https://healthcare.gov" target="_blank" class="mono" style="font-size:11px; color:var(--muted-light);">COBRA / ACA →</a>
+      <a href="https://dhs.dc.gov/service/snap-eligibility-requirements" target="_blank" class="mono" style="font-size:11px; color:var(--muted-light);">APPLY FOR SNAP →</a>
+      <a href="https://fedsupport.dc.gov" target="_blank" class="mono" style="font-size:11px; color:var(--muted-light);">FEDERAL WORKER HELP →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<!-- TikTok embed.js -->
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+<!-- TikTok Follow Bar -->
+<div style="background:#0A0A0A; border-top:1px solid rgba(0,255,65,0.12); padding:16px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+  <div style="display:flex; align-items:center; gap:14px;">
+    <span style="font-family:var(--font-primary); font-size:10px; font-weight:700; color:var(--muted-light); letter-spacing:0.1em; text-transform:uppercase;">// FOLLOW THE JOURNEY</span>
+    <a href="https://www.tiktok.com/@neurospicydatawhiz" target="_blank" rel="noopener"
+       style="display:inline-flex; align-items:center; gap:8px; font-family:var(--font-primary); font-size:12px; font-weight:700; color:var(--green); border:1px solid rgba(0,255,65,0.3); padding:6px 14px; border-radius:2px; text-decoration:none; letter-spacing:0.06em; transition:all 0.15s;"
+       onmouseover="this.style.background='rgba(0,255,65,0.1)'; this.style.borderColor='var(--green)'"
+       onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(0,255,65,0.3)'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/>
+      </svg>
+      @NEUROSPICYDATAWHIZ
+    </a>
+  </div>
+  <span style="font-family:var(--font-primary); font-size:10px; color:var(--muted); letter-spacing:0.06em;">THE ROBIN HOOD OF AI · UNEMPLOYMENT JOURNEY · 2026</span>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div>
+      <div class="footer-brand">SIDE HUSTLE SISI &nbsp;//&nbsp; DATA VIGILANTE</div>
+      <div class="caption" style="margin-top:4px; color:var(--muted);">BUILT BY SIERRA NAPIER · THME · WASHINGTON DC · 2026</div>
+    </div>
+    <div class="footer-support-links">
+      <a href="#cover" class="support-link">// BACK TO TOP</a>
+      <a href="https://does.dc.gov" target="_blank" class="support-link">// DC DOES</a>
+      <a href="https://www.dol.gov/general/topic/unemployment-insurance" target="_blank" class="support-link">// US DOL</a>
+      <a href="https://www.tiktok.com/@neurospicydatawhiz" target="_blank" class="support-link">// TIKTOK</a>
+      <a href="https://www.buymeacoffee.com/thedatavigilante" target="_blank" class="support-link">// BUY ME A COFFEE</a>
+      <a href="https://github.com/thedatavigilante" target="_blank" class="support-link">// GITHUB</a>
+    </div>
+    <span class="caption" style="color:var(--muted);">© 2026 THME. FREE TO SHARE WITH ATTRIBUTION.</span>
+  </div>
+</footer>
+
+<!-- ============================================================
+     FLOATING SUPPORT BUTTON
+============================================================ -->
+<a href="https://www.buymeacoffee.com/thedatavigilante" target="_blank" class="floating-coffee-btn" aria-label="Support the project">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+    <line x1="6" y1="2" x2="6" y2="4"></line>
+    <line x1="10" y1="2" x2="10" y2="4"></line>
+    <line x1="14" y1="2" x2="14" y2="4"></line>
+  </svg>
+  <span class="btn-text">SUPPORT FOUNDER</span>
+</a>
+
+<!-- ============================================================
+     MATRIX RAIN SCRIPT
+============================================================ -->
+<script>
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+  const fontSize = 14;
+  const cols = Math.floor(canvas.width / fontSize);
+  const drops = Array(cols).fill(1);
+  function draw() {
+    ctx.fillStyle = 'rgba(18,18,18,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00FF41';
+    ctx.font = fontSize + 'px Space Mono, monospace';
+    for (let i = 0; i < drops.length; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  setInterval(draw, 50);
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+</body>
+</html>

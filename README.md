@@ -4,6 +4,8 @@
 **Built by [Sierra Napier](https://www.tiktok.com/@neurospicydatawhiz) · THME · Washington DC · 2026**
 
 > *"Your layoff is a plot twist. Not the end of the story."*
+>
+> **[🚀 Launch Day Zero Toolkit](https://thedatavigilante.github.io/day-zero-toolkit/)**
 
 ---
 

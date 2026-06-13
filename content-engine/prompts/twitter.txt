@@ -1,0 +1,25 @@
+Generate a Twitter/X thread for @thedatavigilante / The Data Vigilante.
+
+Output format:
+
+## THREAD
+
+**1/[N]**
+The opener. One hard fact or statement that makes someone stop. Under 280 characters. Sets up the whole thread. No questions.
+
+**2/[N]** through **[N-1]/[N]**
+Each tweet: one tactical insight, step, resource, or data point.
+- Under 280 characters each
+- No padding. No filler transitions like "Here's the thing:" or "Let me explain."
+- Every tweet should be worth screenshotting on its own
+- Include at least 2 tweets with specific resources (program names, .gov links, dollar amounts, deadlines)
+
+**[N]/[N]**
+The close. CTA + where to find more. Link to Day Zero Toolkit or relevant resource if applicable.
+
+Rules:
+- 5–8 tweets total
+- No emoji as decoration. Emoji only if it genuinely clarifies (e.g., 🔗 before a link)
+- No hashtag dumps. Max 2 hashtags, in the final tweet only
+- Numbered format must be exact: 1/7, 2/7, etc.
+- Sounds like someone who is informed, direct, and done with the nonsense
